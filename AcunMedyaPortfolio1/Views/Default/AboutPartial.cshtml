@@ -1,0 +1,37 @@
+﻿@model List<AcunMedyaPortfolio1.Models.TblAbout>
+
+<div id="about" class="section wb">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                   
+                        <div class="message-box">
+                            <h2>@item.Title</h2>
+                            <p>@item.Description</p>
+
+                            <a href="#" class="sim-btn btn-hover-new" data-text="Download CV"><span>CV'mi İndir</span></a>
+                        </div><!-- end messagebox -->
+                    
+                </div><!-- end col -->
+
+                <div class="col-md-6">
+                    <div class="right-box-pro wow fadeIn">
+                        <img src="@item.ImageUrl" alt="" class="img-fluid img-rounded">
+                    </div><!-- end media -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        }
+    </div><!-- end container -->
+</div>
+
+
+
+<!--buranın 3 tane gelmesinin sebebi veritabanında 3 kayıt var ve o butonların olduğu kısımı da döngü içine almışsın
+    istersen orayı düzenlersin döngüden çıkartırsın istersen de döngüye bir if bloğu koyarsın 1 de bitmesini sağlarsın
+    oda olmaz dersen sql de 1 veri bırakırsın hep :) hocam sql den silmek daha mantıklı değil mi :D
+    şimdi ben olsam ben de öyle yapardım ama senin öğrenmen için ifle 1e bağlaman da güzel olabilir :D 
+    tamamdır hocam sağ olun ama uğraşmak istemiyorsan sqlden silersin dsmkgldsngks
+    diğerine bakalım hemen
+    -->

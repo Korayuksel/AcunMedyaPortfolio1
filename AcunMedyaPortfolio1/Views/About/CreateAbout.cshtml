@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "CreateAbout";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>About Ekleme Sayfası</h2>
+<form method="post">
+    <label>About Etiketi</label>
+    <input type="text" class="table table-bordered" name="Title" />
+    <label>About Açıklaması</label>
+    <textarea rows="4" class="table table-bordered" name="Description"></textarea>
+    <br />
+    <label>About Resim Yolu</label>
+    <input type="text" class="table table-bordered" name="ImageUrl" />
+    <br />
+
+    <br />
+    <button class="btn btn-info"> About Kaydet </button>
+</form>

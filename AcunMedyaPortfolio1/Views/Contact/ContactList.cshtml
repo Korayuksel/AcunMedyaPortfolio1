@@ -1,0 +1,103 @@
+﻿@model List<AcunMedyaPortfolio1.Models.TblContact>
+@{
+    ViewBag.Title = "ContactList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+@model List<AcunMedyaPortfolio1.Models.TblContact>
+@{
+    ViewBag.Title = "ContactList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<h2>Mesaj Listesi</h2>
+
+<table class="table table-bordered" style="width: 100%;">
+    <thead>
+        <tr>
+            <th>Mesaj ID</th>
+            <th>Ad Soyad</th>
+            <th>E-Mail</th>
+            <th>Telefon</th>
+            <th>Gönderim Tarihi</th>
+            <th>Okundu Mu?</th>
+            <th>Mesajı Görüntüle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContactID</td>
+                <td>@item.NameSurname</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.SendDate</td>
+                <td>@item.IsRead</td>
+                <td>
+                    <button class="btn btn-outline-info"
+                            data-bs-toggle="modal"
+                            data-bs-target="#messageModal"
+                            data-message="@item.Message"
+                            data-senddate="@item.SendDate"
+                            data-isread="@item.IsRead">
+                        Mesajı Görüntüle
+                    </button>
+                </td>
+                <td>
+                    <a href="/Contact/DeleteContact/@item.ContactID" class="btn btn-outline-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Contact/CreateContact/" class="btn btn-outline-primary">Mesaj Ekle</a>
+
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Mesaj Detayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Gönderim Tarihi:</strong> <span id="modalSendDate"></span></p>
+                <p><strong>Okundu Mu:</strong> <span id="modalIsRead"></span></p>
+                <p><strong>Mesaj:</strong></p>
+                <p id="modalMessageContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Modal içerisine mesajı yüklemek için
+    document.addEventListener('DOMContentLoaded', function () {
+        const messageModal = document.getElementById('messageModal');
+        const modalMessageContent = document.getElementById('modalMessageContent');
+        const modalSendDate = document.getElementById('modalSendDate');
+        const modalIsRead = document.getElementById('modalIsRead');
+
+        messageModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget; // Modal'ı açacak olan buton
+            const message = button.getAttribute('data-message'); // Mesaj içeriği
+            const sendDate = button.getAttribute('data-senddate'); // Gönderim tarihi
+            const isRead = button.getAttribute('data-isread'); // Okundu bilgisi
+
+            modalMessageContent.textContent = message;
+            modalSendDate.textContent = sendDate;
+            modalIsRead.textContent = isRead;
+        });
+    });
+</script>

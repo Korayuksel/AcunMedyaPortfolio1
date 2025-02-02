@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+    
+<!doctype html>
+<html lang="en">
+@Html.Action("_HeaderPartial","AdminLayout")
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        @Html.Action("_SidearPartial", "AdminLayout")   <!--SİDEBAR ADI BEN YANLIŞ YAZDIM SİDEAR OLARAK KULLAN-->
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <!-- Sürekli değişiceği için partialwiew e dönüştürmüyoruz-->
+            @RenderBody() 
+        </div>
+    </div>
+
+    @Html.Action("_ScriptsPartial", "AdminLayout")
+</body>
+</html>
+<!--etRender.Body() bir sayfanın layout olabilmesi için içeriklerini dğeiştirmemzie yarıyan kod.-->
+<!-- Proje layout kısmından çalıştırılmaz layout a bağlı sayfalardan çalıştırılır , çalıştırıldığında Renderbody( ) komutunda hata alırız. bu proje için categorylist sayfasından çalıştırıcaz.-->

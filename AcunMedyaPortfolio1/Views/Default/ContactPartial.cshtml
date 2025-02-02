@@ -1,0 +1,31 @@
+﻿@model List<AcunMedyaPortfolio1.Models.TblContact>
+
+<div id="contact" class="section db">
+    <div class="container">
+        <div class="section-title text-left">
+            <h3>İletişim</h3>
+
+            <p>Bizimle iletişime geçmek için aşağıdaki kutucukları doldurmanız yeterli...</p>
+        </div><!-- end title -->
+
+        <form action="/Contact/CreateContact/" method="post" class="contact-form col-md-10 col-lg-8 m-auto">
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <input type="text" name="NameSurname" size="50" class="form-control" placeholder="İsim" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="email" name="Email" class="form-control" placeholder="Mail" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="text" name="Phone" class="form-control" placeholder="Telefon" required>
+                </div>
+                <div class="form-group col-sm-12">
+                    <textarea name="Message" id="comment" rows="6" class="form-control" placeholder="Mesaj"></textarea>
+                </div>
+                <div class="form-group col-sm-12 mt-3">
+                    <button id="sendMessageButton" class="sim-btn btn-hover-new" data-text="Mesaj Yolla" type="submit">Mesaj Yolla</button>
+                </div>
+            </div><!-- end container -->
+        </form>
+    </div>
+</div></div>
